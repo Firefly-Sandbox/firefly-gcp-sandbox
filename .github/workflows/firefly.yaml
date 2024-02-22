@@ -27,13 +27,13 @@ jobs:
           terraform_version: "1.6.5"
 
     - name: Terraform Init
-      run: terraform init
+      run: terraform init -lock=false
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }} 
 
     - name: Terraform Plan
       run: |
-        terraform plan -out tf.plan
+        terraform plan -out tf.plan -lock=false
         terraform show -json tf.plan > plan.json
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
