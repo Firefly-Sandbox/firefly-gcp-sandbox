@@ -10,9 +10,6 @@ resource "google_container_cluster" "dev-gkc-cluster-1-fe0" {
       disabled = false
     }
   }
-  binary_authorization {
-    enabled = false
-  }
   cluster_autoscaling {
     auto_provisioning_defaults {
       management {
@@ -73,6 +70,7 @@ resource "google_container_cluster" "dev-gkc-cluster-1-fe0" {
     }
   }
   node_version = "1.27.8-gke.1067004"
+  min_master_version = "1.27.8-gke.1067004"
   notification_config {
     pubsub {
       enabled = false
@@ -109,14 +107,6 @@ resource "google_compute_subnetwork" "acme-dev-net1-f3b" {
   project                    = var.project   # e.g. acme-gcp-prod
   purpose                    = "PRIVATE"
   region                     = var.region   # e.g. us-east1
-  secondary_ip_range {
-    ip_cidr_range = "10.0.0.0/16"
-    range_name    = "gke-dev-gkc-cluster-1-services-ada3d789"
-  }
-  secondary_ip_range {
-    ip_cidr_range = "192.168.0.0/16"
-    range_name    = "gke-dev-gkc-cluster-1-pods-ada3d789"
-  }
   stack_type = "IPV4_ONLY"
 }
 
