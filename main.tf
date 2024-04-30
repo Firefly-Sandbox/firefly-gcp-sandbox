@@ -151,7 +151,7 @@ resource "google_storage_bucket" "acme-prod-storage-6b6" {
   name                        = "acme-prod-storage"
   project                     = "acme-gcp-prod"
   requester_pays              = false
-  uniform_bucket_level_access = true
+  uniform_bucket_level_access = false
 }
 
 resource "google_compute_instance" "acme-prod-compute-7d5" {
