@@ -100,8 +100,8 @@ resource "google_compute_instance" "acme-prod-compute-spare-451" {
   name           = "acme-prod-compute-spare"
   network_interface {
     access_config {
-      nat_ip       = "34.28.244.196"
-      network_tier = "PREMIUM"
+      nat_ip       = "35.209.243.166"
+      network_tier = "STANDARD"
     }
     network            = "${google_compute_network.default-43e.self_link}"
     network_ip         = "10.128.0.3"
