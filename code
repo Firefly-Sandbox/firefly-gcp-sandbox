@@ -1,0 +1,38 @@
+import com.pulumi.aws.ec2.NetworkInterface;
+import com.pulumi.aws.ec2.NetworkInterfaceArgs;
+import com.pulumi.aws.ec2.inputs.NetworkInterfaceAttachmentArgs;
+
+public class AwsNetworkInterfaces {
+
+    private static final String SUBNET_ID_1 = "subnet-0c577ed793762eea8";
+    private static final String SUBNET_ID_2 = "subnet-032ce0f510d034142";
+    private static final String SECURITY_GROUP_ID = "sg-020a769fa8586a8ad";
+    private static final String PRIVATE_IP_1 = "192.168.91.138";
+    private static final String PRIVATE_IP_2 = "192.168.125.121";
+    private static final String DESCRIPTION_1 = "c6cf8db8e00540d4beafceccca5186f2";
+    private static final String DESCRIPTION_2 = "bd01e9d56bdf4a0c91bca7996798eb5a";
+
+    public static void main(String[] args) {
+        var networkInterface1 = new NetworkInterface("networkInterface1", NetworkInterfaceArgs.builder()
+                .subnetId(SUBNET_ID_1)
+                .securityGroups(SECURITY_GROUP_ID)
+                .privateIps(PRIVATE_IP_1)
+                .description(DESCRIPTION_1)
+                .sourceDestCheck(true)
+                .attachment(NetworkInterfaceAttachmentArgs.builder()
+                        .deviceIndex(2)
+                        .build())
+                .build());
+
+        var networkInterface2 = new NetworkInterface("networkInterface2", NetworkInterfaceArgs.builder()
+                .subnetId(SUBNET_ID_2)
+                .securityGroups(SECURITY_GROUP_ID)
+                .privateIps(PRIVATE_IP_2)
+                .description(DESCRIPTION_2)
+                .sourceDestCheck(true)
+                .attachment(NetworkInterfaceAttachmentArgs.builder()
+                        .deviceIndex(2)
+                        .build())
+                .build());
+    }
+}
