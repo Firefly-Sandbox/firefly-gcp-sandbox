@@ -147,6 +147,7 @@ resource "google_compute_network" "acme-prod-vpc-ce8" {
 
 resource "google_storage_bucket" "acme-prod-storage-6b6" {
   default_event_based_hold    = false
+  force_destroy               = false
   location                    = "US"
   name                        = "acme-prod-storage"
   project                     = "acme-gcp-prod"
@@ -200,4 +201,3 @@ resource "google_compute_instance" "acme-prod-compute-7d5" {
   tags = ["http-server", "https-server"]
   zone = "us-central1-a"
 }
-
